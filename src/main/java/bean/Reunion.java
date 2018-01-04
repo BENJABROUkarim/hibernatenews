@@ -6,14 +6,25 @@ package bean;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "REUNION")
 public class Reunion {
 
+	@Id
+	@GeneratedValue
+	@Column(name = "ID")
 	private Long idReunion;
+	@Column(name = "DATE_REUNION")
 	private Date dateReunion;
+	@Column(name = "Titre_REUNION")
 	private String titreReunion;
 
-	
-	
 	public Reunion(Long idReunion, Date dateReunion, String titreReunion) {
 		super();
 		this.idReunion = idReunion;

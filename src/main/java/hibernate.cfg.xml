@@ -16,7 +16,11 @@
 			org.hibernate.cache.NoCacheProvider
 		</property>
 		<property name="show_sql">true</property>
-		<property name="hbm2ddl.auto">create</property>
-		<mapping resource="bean/Reunion.hbm.xml" />
+		<property name="hbm2ddl.auto">update</property>
+		<!-- <mapping resource="bean/Reunion.hbm.xml" /> -->
+		<mapping class="bean.Personne" />
+		<mapping class="bean.Adresse" />
+		<mapping class="bean.Reunion" />
+
 	</session-factory>
 </hibernate-configuration>

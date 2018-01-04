@@ -11,6 +11,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import bean.Personne;
 import bean.Reunion;
 import utilhibernate.HibernateUtil;
 
@@ -24,6 +25,22 @@ public class ReunionManager {
 		reunion.setIdReunion(id);
 		reunion.setTitreReunion(titre);
 		session.save(reunion);
+		session.getTransaction().commit();
+	}
+
+	public void addReunionToPersonne(int idPersonne, long idReuniuon) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		session.beginTransaction();
+		// charger la personne
+		Personne personne = (Personne) session.load(Personne.class, idPersonne);
+		// charger la réunion
+		Reunion reunion = (Reunion) session.load(Reunion.class, idReuniuon);
+		/**
+		 * pas d'appel explicite à save ou update hibernate detecte
+		 * auomatiquement que la collection a été modifiée et a besoin d'etre
+		 * mise à jour (automatic dirty cheking)
+		 */
+		personne.getReunionSet().add(reunion);
 		session.getTransaction().commit();
 	}
 
@@ -51,11 +68,12 @@ public class ReunionManager {
 		query.executeUpdate();
 		session.getTransaction().commit();
 	}
-	
+
 	public static void main(String[] args) {
 		ReunionManager manager = new ReunionManager();
 		manager.addListReunion(getReunion());
 		manager.remveReunion("hibernate");
+		manager.addReunionToPersonne(1, (long) 4);
 		HibernateUtil.getSessionFactory().close();
 	}
 
