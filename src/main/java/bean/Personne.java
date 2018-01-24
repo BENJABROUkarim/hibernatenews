@@ -30,22 +30,6 @@ public class Personne {
 	@Column(name = "Nom")
 	private String nomPersonne;
 
-	public Adresse getAdresse() {
-		return adresse;
-	}
-
-	public void setAdresse(Adresse adresse) {
-		this.adresse = adresse;
-	}
-
-	public Set<Reunion> getReunionSet() {
-		return reunionSet;
-	}
-
-	public void setReunionSet(Set<Reunion> reunionSet) {
-		this.reunionSet = reunionSet;
-	}
-
 	@Column(name = "Prenom")
 	private String prenomPersonne;
 	@Column(name = "DateNaiss")
@@ -75,6 +59,22 @@ public class Personne {
 
 	public void setIdPersonne(int idPersonne) {
 		this.idPersonne = idPersonne;
+	}
+
+	public Adresse getAdresse() {
+		return adresse;
+	}
+
+	public void setAdresse(Adresse adresse) {
+		this.adresse = adresse;
+	}
+
+	public Set<Reunion> getReunionSet() {
+		return reunionSet;
+	}
+
+	public void setReunionSet(Set<Reunion> reunionSet) {
+		this.reunionSet = reunionSet;
 	}
 
 	public String getNomPersonne() {
